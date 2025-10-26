@@ -4,7 +4,7 @@ import json
 import os
 import pytz
 import plotly.express as px
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
+# from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import discord
 from discord.ext import commands
 from discord.ui import View, Select, Modal, TextInput, Button
@@ -12,7 +12,7 @@ from discord import Interaction, SelectOption
 
 DATA_FILE = "thoughts.json"
 OUTPUT_IMG = "plot.png"
-TIMEZONE = pytz.timezone("America/Los_Angeles")
+# TIMEZONE = pytz.timezone("America/Los_Angeles")
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = os.getenv("CHANNEL_ID")
 
@@ -23,7 +23,7 @@ pattern = re.compile(
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
-# a flag to prevent multiple scans at once
+# flag to prevent multiple scans at once
 is_scanning = False
 
 
@@ -294,7 +294,7 @@ async def on_ready():
         await channel.send(f"{bot.user.name} online.") # and ready to cyberbully.")
     # starts the scheduled task manager
     # thought it isn't used yet so just placeholder for the time being
-    scheduler.start()
+    .start()
 
 
 @bot.event
@@ -414,8 +414,9 @@ async def add_thought(ctx, user: discord.User, *, thought: str):
     await post_plot_for_user(user)
 
 
-scheduler = AsyncIOScheduler(timezone=TIMEZONE) 
+# scheduler = AsyncIOScheduler(timezone=TIMEZONE) 
 # scheduler for periodic tasks
 # not implemented but placeholder for weekly summaries etc
+
 
 bot.run(DISCORD_TOKEN)
