@@ -414,9 +414,23 @@ async def add_thought(ctx, user: discord.User, *, thought: str):
     await post_plot_for_user(user)
 
 
+# purge command to dump the db
+@bot.command(name="purge", help="!purge` - Purge datafile.")
+async def purge_data(ctx):
+    global is_scanning
+    if is_scanning:
+        await ctx.send("Cannot purge data while scan in progress.")
+        return
+    # delete thoughts.json
+    if os.path.exists(DATA_FILE):
+        os.remove(DATA_FILE)
+    await ctx.send("Thought data purged.")
+
+
 # scheduler = AsyncIOScheduler(timezone=TIMEZONE) 
 # scheduler for periodic tasks
 # not implemented but placeholder for weekly summaries etc
 
 
 bot.run(DISCORD_TOKEN)
+
