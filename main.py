@@ -294,7 +294,6 @@ async def on_ready():
         await channel.send(f"{bot.user.name} online.") # and ready to cyberbully.")
     # starts the scheduled task manager
     # thought it isn't used yet so just placeholder for the time being
-    .start()
 
 
 @bot.event
@@ -434,3 +433,4 @@ async def purge_data(ctx):
 
 if __name__ == "__main__":
     bot.run(DISCORD_TOKEN)
+
