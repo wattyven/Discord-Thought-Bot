@@ -432,5 +432,5 @@ async def purge_data(ctx):
 # not implemented but placeholder for weekly summaries etc
 
 
-bot.run(DISCORD_TOKEN)
-
+if __name__ == "__main__":
+    bot.run(DISCORD_TOKEN)
